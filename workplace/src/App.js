@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  
+  constructor() {
+    super();
+    this.state = {
+      todos: [
+        {
+          id: 1,
+          title: "Hello, React!",
+          body: "React始めました!",
+          done: false
+        },
+        {
+          id: 2,
+          title: "Hello, Redux!",
+          body: "Reduxも始めました!",
+          done: false
+        },
+      ]
+    }
+  }
+
+  render() {
+    return (
+      <div className="app">
+        <h1>todoアプリ</h1>
+        <ul>
+          <li>{this.state.todos[0]}</li>
+          <li>{this.state.todos[1]}</li>
+        </ul>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
