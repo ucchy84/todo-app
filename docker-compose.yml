@@ -1,0 +1,11 @@
+version: '3'
+services: 
+  app:
+    container_name: todo-app
+    build: .
+    volumes: 
+      - ./:/usr/src/app
+    command: ash -c "cd workplace && yarn start"
+    ports:
+      - '3000:3000'
+    tty: true
