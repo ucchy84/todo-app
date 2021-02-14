@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Todo from './Todo';
 
-class App extends Component {
+class App extends React.Component {
   
   constructor() {
     super();
@@ -23,12 +24,17 @@ class App extends Component {
   }
 
   render() {
+    const todos = this.state.todos.map( todo =>
+      <Todo
+        key={todo.id}
+        {...todo}
+      />
+    )
     return (
       <div className="app">
         <h1>todoアプリ</h1>
         <ul>
-          <li>{this.state.todos[0]}</li>
-          <li>{this.state.todos[1]}</li>
+          {todos}
         </ul>
       </div>
     )
