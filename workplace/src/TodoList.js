@@ -6,16 +6,15 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
 
-export default function TodoList() {
-  const classes = useStyles();
+const TodoList = () => {
+  const classes = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+      maxWidth: 360,
+      backgroundColor: theme.palette.background.paper,
+    },
+  }));
   const [checked, setChecked] = React.useState([]);
 
   const handleToggle = (value) => () => {
@@ -52,3 +51,5 @@ export default function TodoList() {
     </List>
   );
 }
+
+export default TodoList;

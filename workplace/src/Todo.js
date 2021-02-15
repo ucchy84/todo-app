@@ -1,24 +1,20 @@
 import React from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+// import TodoList from './TodoList';
+// import { render } from 'react-dom';
+// import { Table } from '@material-ui/core';
 
-class Todo extends React.Component {
-
-  render() {
-    // const className = 'unDone'
-    // const link = this.props.done ? '元に戻す' : '完了'
-
-    return (
-      <TableRow key={this.props.id}>
-        <TableCell component="th" scope="row">
-          {this.props.id}
-        </TableCell>
-        <TableCell align="right">{this.props.title}</TableCell>
-        <TableCell align="right">{this.props.body}</TableCell>
-      </TableRow>
-    )
-
-  }
+const Todo = (props) => {
+  return (
+    <TableRow key={props.id}>
+      <TableCell component="th" scope="row">
+        {props.id}
+      </TableCell>
+      <TableCell align="right">{props.title}</TableCell>
+      <TableCell align="right">{props.body}</TableCell>
+    </TableRow>
+  )
 }
 
-export default Todo
+export default Todo;

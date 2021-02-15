@@ -11,7 +11,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-export default function App() {
+const App = () => {
   const [todos, setTodos] = React.useState(
     [
       {
@@ -57,7 +57,10 @@ export default function App() {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <TodoList />
     </div>
   )
-
 }
+
+export default App;
