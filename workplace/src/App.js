@@ -1,20 +1,21 @@
 import React from 'react';
 import Form from './Form';
 import TodoList from './TodoList';
+import Container from '@material-ui/core/Container';
 
 const App = () => {
   const [todos, setTodos] = React.useState(
     [
       {
         id: 1,
-        title: "hello, React!",
-        body: "React始めました!",
+        title: "フンボルトペンギン",
+        body: "ペンギン",
         done: false,
       },
       {
         id: 2,
-        title: "Hello Redux!",
-        body: "Reduxも始めました",
+        title: "皇帝ペンギン",
+        body: "ペンギン",
         done: false,
       },
       {
@@ -40,9 +41,11 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>todoアプリ</h1>
-      <Form />
-      <TodoList todos = {todos} />
+      <Container maxWidth="sm">
+        <h1>todoアプリ</h1>
+        <Form />
+        <TodoList todos = {todos} />
+      </Container>
     </div>
   )
 }
