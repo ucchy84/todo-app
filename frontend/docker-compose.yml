@@ -5,7 +5,7 @@ services:
     build: .
     volumes: 
       - ./:/usr/src/app
-    command: ash -c "cd workplace && yarn start"
+    command: ash -c "yarn start"
     ports:
       - '3000:3000'
     tty: true
