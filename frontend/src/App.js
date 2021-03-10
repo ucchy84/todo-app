@@ -1,23 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Form from './Form';
 import Todo from './Todo';
 
 const App = () => {
-  const [todo, setTodos] = React.useState([]);
-
-  React.useEffect(() => {
-    const todosRef = db.collection("todos");
-    todosRef.get().then((snapshot) => {
-      snapshot.forEach((doc) => {
-        console.log(doc.id, doc.data())
-      });
-    });
-  });
+  const [todos, setTodos] = React.useState([]);
 
   const handleAdd = (e) => {
     e.preventDefault();
     setTodos([
-      ...todo,
+      ...todos,
       e.target.title.value
     ]);
     e.target.title.value = '';
@@ -28,7 +19,7 @@ const App = () => {
       <div class="container-xl px-10 py-10 bg-indigo-200">
         <h1>todoアプリ</h1>
         <Form handleAdd = {handleAdd} />
-        <Todo todos = {todo} />
+        <Todo todos = {todos} />
       </div>
     </div>
   )

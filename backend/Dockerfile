@@ -1,26 +1,9 @@
-FROM ruby:2.7-alpine
+FROM golang:1.16-alpine
 
-ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql yarn vim g++" \
-  BUILD_PACKAGES="build-base curl-dev" \
-  ROOT="/usr/src/app" \
-  LANG=C.UTF-8 \
-  TZ=Asia/Tokyo
+WORKDIR /go/
 
-WORKDIR ${ROOT}
-COPY Gemfile ${ROOT}
-COPY Gemfile.lock ${ROOT}
+RUN apk update && apk add --no-cache git curl
 
-RUN apk update && \
-  apk upgrade && \
-  apk add --no-cache ${RUNTIME_PACKAGES} && \
-  apk add --virtual build-packages --no-cache ${BUILD_PACKAGES} && \
-  bundle install && \
-  apk del build-packages
-
-COPY . ${ROOT}
-
-# Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000
+RUN go get github.com/go-sql-driver/mysql
+RUN go get github.com/jinzhu/gorm
+RUN go get github.com/gorilla/mux
