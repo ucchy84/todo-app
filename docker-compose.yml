@@ -17,8 +17,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     volumes:
-      - ./backend:/go/
-    command: ash -c "go run src/main.go"
+      - ./backend:/go/src/app
+    command: ash -c "go run main.go"
     tty: true
     ports:
       - 8080:8080
