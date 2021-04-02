@@ -1,8 +1,9 @@
 import React from 'react';
 
 const Todo = (props) => {
-  const listTodos = props.todos.map((todo, i) => 
-    <li key={i}>{todo}</li>
+
+  const listTodos = props.todos.map(todo => 
+    <li key={todo.id}>{todo.task}</li>
   );
 
   return (
@@ -11,7 +12,7 @@ const Todo = (props) => {
         {listTodos}
       </ul>
     </div>
-  )
+  );
 }
 
 export default Todo;

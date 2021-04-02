@@ -52,15 +52,13 @@ func (c TodoController) Create(w http.ResponseWriter, r *http.Request) {
 	}
 
 	models.InsertTodo(&todo)
-	// responseBody, err := json.Marshal(todo)
-	// if err != nil {
-	// 	panic(err.Error)
-	// }
+	responseBody, err := json.Marshal(todo)
+	if err != nil {
+		panic(err.Error)
+	}
 
-	// w.Header().Set("Contetn-Type", "application/json")
-	// w.Write(responseBody)
-
-	fmt.Fprintf(w, "New post was created")
+	w.Header().Set("Contetn-Type", "application/json")
+	w.Write(responseBody)
 }
 
 func (c TodoController) Delete(w http.ResponseWriter, r *http.Request) {

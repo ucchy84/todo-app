@@ -1,26 +1,50 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from './Header';
+import List from './List';
+import Diary from './Diary';
 import Form from './Form';
-import Todo from './Todo';
+// import axios from 'axios';
 
 const App = () => {
-  const [todos, setTodos] = React.useState([]);
+  // const [todos, setTodos] = React.useState([]);
 
-  const handleAdd = (e) => {
-    e.preventDefault();
-    setTodos([
-      ...todos,
-      e.target.title.value
-    ]);
-    e.target.title.value = '';
-  };
+  // React.useEffect(() => {
+  //   fetchTodos();
+  // }, []);
+
+  // const fetchTodos = () => {
+  //   axios.get('http://localhost:8080/todos')
+  //     .then(res => {
+  //       setTodos(res.data);
+  //     })
+  // };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const task = { task: e.target.task.value };
+  //   axios.post('http://localhost:8080/todo', task)
+  //     .then(res => {
+  //       setTodos([
+  //         ...todos,
+  //         res.data,
+  //       ])
+  //     })
+  //   e.target.task.value = '';
+  // }
 
   return (
     <div className="app">
-      <div class="container-xl px-10 py-10 bg-indigo-200">
-        <h1>todoアプリ</h1>
-        <Form handleAdd = {handleAdd} />
-        <Todo todos = {todos} />
-      </div>
+      <Router>
+        <Header />
+        <main>
+          <div class="max-w-5xl mx-auto py-6 sm:px-6 lg:px-8">
+            <Route exact path='/' component={List}/>
+            <Route exact path='/Diary' component={Diary}/>
+            <Route exact path='/Form' component={Form} />
+          </div>
+        </main>
+      </Router>
     </div>
   )
 }
