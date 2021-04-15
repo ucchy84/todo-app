@@ -3,8 +3,8 @@ services:
   front:
     container_name: react
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
+      context: ./dockerfiles
+      dockerfile: Dockerfile-front
     volumes: 
       - ./frontend:/usr/src/app
     command: ash -c "yarn start"
@@ -14,11 +14,11 @@ services:
   api:
     container_name: go-api
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: ./dockerfiles
+      dockerfile: Dockerfile-api
     volumes:
-      - ./backend:/go/
-    command: ash -c "go run src/main.go"
+      - ./backend:/go/src/app
+    command: ash -c "go run main.go"
     tty: true
     ports:
       - 8080:8080
@@ -29,14 +29,14 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: todo_database
       MYSQL_USER: ucchy
       MYSQL_PASSWORD: password
       TZ: 'Asia/Tokyo'
     volumes:
-      - db:/var/lib/mysql
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+      - db-volume:/var/lib/mysql
     ports:
       - 3306:3306
 
 volumes:
-  db: ~
+  db-volume:
