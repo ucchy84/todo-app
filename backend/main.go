@@ -1,7 +1,7 @@
 package main
 
 import (
-	"todo-api/config"
+	"access-manager/config"
 )
 
 func main() {
